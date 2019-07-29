@@ -1,0 +1,18 @@
+{% extends 'basemain.html' %}
+{% block content%}
+
+{% load staticfiles %}
+<a href="/art/new">글쓰기</a>
+<br>
+{% for art in art_home %}
+<div>
+<h2><a href="/art/show/{{ art.id }}">{{ art.title }}</a></h2>
+  {% if art.image %}
+<img src="{{ art.image.url }}" alt="art">
+{% endif %}
+  <p>{{ art.created_at }}</p>
+  <a href="/art/edit/{{ art.id }}">수정</a>
+  <a href="/art/delete/{{ art.id }}">삭제</a>
+</div>
+{% endfor %}
+{% endblock %}

@@ -25,7 +25,9 @@
     {% csrf_token %}
     <p>{{c.content}}</p>
     <p>{{c.user}}</p>
+    {% ifequal user c.user %}
     <button type="submit"> 삭제하기 </button>
+    {% endifequal %}
     <p>{{c.created_at}}</p>
 </div>
 {% endfor %}

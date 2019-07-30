@@ -3,7 +3,7 @@ from django.utils import timezone
 from django.core.paginator import Paginator
 from .models import Art, ArtComent
 from django.contrib.auth.models import User
-
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def arthome(req):
@@ -13,6 +13,7 @@ def arthome(req):
 def artnew(req):
     return render(req,'artnew.html')
 
+@login_required(redirect_field_name='login')
 def artcreate(req):
     if(req.method =='POST'):
         new_art =Art()

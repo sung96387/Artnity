@@ -10,7 +10,7 @@ class Art(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     content = models.TextField(default='',max_length=500)
     image = models.ImageField(upload_to=get_art_image_path, default='')
-   
+
     def save(self, *args, **kwargs):
         if self.pk is None:
             temp_image = self.image
@@ -20,4 +20,4 @@ class Art(models.Model):
         super().save(*args, **kwargs)
     def __str__ (self) :
         return self.title
-    
+

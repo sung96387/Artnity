@@ -23,3 +23,8 @@ class Art(models.Model):
     def __str__ (self) :
         return self.title
 
+class ArtComent(models.Model):
+    content = models.TextField()
+    created_at = models.DateField(auto_now_add=True)
+    user=models.ForeignKey(User, on_delete=models.CASCADE)
+    art = models.ForeignKey(Art, on_delete=models.CASCADE)

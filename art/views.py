@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.core.paginator import Paginator
 from .models import Art, ArtComent
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -18,7 +19,6 @@ def artcreate(req):
         new_art.title = req.POST['title']
         new_art.content = req.POST['content']
         new_art.user = req.user
-        print(req.FILES)
         if 'image' in req.FILES.keys():
             new_art.image = req.FILES['image']
         new_art.save()
@@ -29,7 +29,8 @@ def artdelete(req,art_id):
     return redirect('/')
 def artshow(req, art_id):
     art = get_object_or_404(Art, id = art_id)
-    return render(req, 'artshow.html', {'art':art})
+    coments = art.artcoment_set.all()
+    return render(req, 'artshow.html', {'art':art, 'coment':coments})
 def artedit(req,art_id):
     art = get_object_or_404(Art, id = art_id)
     return render(req,'artedit.html',{'art_edit':art})
@@ -41,3 +42,16 @@ def artupdate(req, art_id):
     art.save()
     return redirect('/art/show/'+ str(art_id))
 
+def comentcreate(req, art_id):
+    if(req.method == 'POST'):
+        user = get_object_or_404(User, id=req.user.id)
+        art = get_object_or_404(Art, id=art_id)
+        art.artcoment_set.create(content=req.POST['coment_content'], user=user)
+
+    return redirect('/art/show/' + str(art_id))
+
+def comentdelete(req, coment_id):
+    coment = get_object_or_404(ArtComent, id=coment_id)
+    art_id = coment.art.id
+    coment.delete()
+    return redirect('/art/show/'+str(art_id))

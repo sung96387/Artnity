@@ -29,6 +29,9 @@ urlpatterns = [
     path('art/delete/<int:art_id>',views.artdelete, name='artdelete'),
     path('art/edit/<int:art_id>',views.artedit, name='artedit'),
     path('art/update/<int:art_id>',views.artupdate, name='artupdate'),
+    path('art/comentcreate/<int:art_id>',views.comentcreate, name='comentcreate'),
+    path('art/comentdelete/<int:coment_id>',views.comentdelete, name='comentdelete'),
+
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

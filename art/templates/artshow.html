@@ -9,9 +9,9 @@
 {% endif %}
 <p>{{ art.content }}</p>
 <br>
-<a href="/art">홈으로</a>
+<a href="/">홈으로</a>
 
-<form action="/memo/comentcreate/{{ memo.id }}" method="POST">
+<form action="/art/comentcreate/{{ art.id }}" method="POST">
     {% csrf_token %}
     <div>
         <label for="coment_content">댓글</label>
@@ -21,9 +21,10 @@
 </form>
 {% for c in coment %}
 <div>
-<form action="/memo/comentdelete/{{ c.id }}" method="POST">
+<form action="/art/comentdelete/{{ c.id }}" method="POST">
     {% csrf_token %}
     <p>{{c.content}}</p>
+    <p>{{c.user}}</p>
     <button type="submit"> 삭제하기 </button>
     <p>{{c.created_at}}</p>
 </div>

@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.core.paginator import Paginator
-from .models import Art
+from .models import Art, ArtComent
 
 # Create your views here.
 
@@ -17,6 +17,7 @@ def artcreate(req):
         new_art =Art()
         new_art.title = req.POST['title']
         new_art.content = req.POST['content']
+        new_art.user = req.user
         print(req.FILES)
         if 'image' in req.FILES.keys():
             new_art.image = req.FILES['image']
@@ -39,3 +40,4 @@ def artupdate(req, art_id):
     art.content = req.POST['content']
     art.save()
     return redirect('/art/show/'+ str(art_id))
+

@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 def get_art_image_path(instance, filename):
     return 'art/%s/%s' % (instance.pk, filename)
@@ -10,6 +10,8 @@ class Art(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     content = models.TextField(default='',max_length=500)
     image = models.ImageField(upload_to=get_art_image_path, default='')
+    user=models.ForeignKey(User, on_delete=models.CASCADE)
+
 
     def save(self, *args, **kwargs):
         if self.pk is None:

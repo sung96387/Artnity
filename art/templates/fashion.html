@@ -1,0 +1,41 @@
+
+{% extends 'subpage.html' %}
+<!---{% block content%}
+
+
+{% load staticfiles %}
+
+<a href="/art/new" id="write">upload</a>
+{% endblock %}--->
+
+    {% block item %}
+{% load staticfiles %}
+    <main role="main">
+      <div class="album py-5 bg-light">
+        <div class="container">
+          <div class="row">
+            
+ {% for art in fashion %}
+	    <div class="col-md-4">
+	      <div class="card mb-4 shadow-sm">
+	        <img class="card-img-top" src="{{ art.image.url }}" alt=" Card image cap" style="max-width: 100%; height: 300px;">
+	        <div class="card-body">
+            <h4><a href="/art/show/{{ art.id }}">{{ art.title }}</a></h4>
+            <h5>{{ art.price }}</h5>
+            {% ifequal user art.user %}
+
+          <a href="/art/edit/{{ art.id }}">수정</a>
+          <a href="/art/delete/{{ art.id }}">삭제</a>
+          {% endifequal %}
+	        </div>
+	      </div>
+	    </div>
+    {% endfor %}
+          </div>
+        </div>
+      </div>
+
+
+
+    </main>
+{% endblock %}

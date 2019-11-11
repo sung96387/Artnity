@@ -8,20 +8,29 @@
 {% for art in art_home %}
 <div>
 <h2><a href="/art/show/{{ art.id }}">{{ art.title }}</a></h2>
-  {% if art.image %}
+{% if art.image %}
 <img src="{{ art.image.url }}" alt="art">
 {% endif %}
   <p>{{ art.created_at }}</p>
 
 {% comment %} {% if user.is_authenticated %} {% endcomment %}
 {% ifequal user art.user %}
-  <span class ="control hidden">
+  <span class ="control hidden">«
   <a href="/art/edit/{{ art.id }}">수정</a>
   <a href="/art/delete/{{ art.id }}">삭제</a>
 {% endifequal %}
-{% comment %} {% endif %} {% endcomment %}
+{% comment %} {% endif %} {% end comment %}
   </span>
+  {% comment %} <div>좋아요 수 : {{art.like_count}}</div>
 
-</div>
+<a href="{% url 'art_like_toggle' art.id %}">
+    {% if post in user.profile.like_posts.all %}
+        취소
+    {% else %}
+        좋아요
+    {% endif %}
+</a>
+</div> {% endcomment %}
+
 {% endfor %}
 {% endblock %}

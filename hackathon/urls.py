@@ -19,6 +19,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from art import views
 
+app_name = 'art'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.arthome, name='arthome'),
@@ -31,6 +33,9 @@ urlpatterns = [
     path('art/update/<int:art_id>',views.artupdate, name='artupdate'),
     path('art/comentcreate/<int:art_id>',views.comentcreate, name='comentcreate'),
     path('art/comentdelete/<int:coment_id>',views.comentdelete, name='comentdelete'),
+    path('art/',views.artList, name ='artList'),
+    # path('art/art_like_toggle/<int:art_id>/', views.art_like_toggle, name='art_like_toggle'),
+    #path('art/like/<int:art_id>',views.like, name='like')
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

@@ -1,5 +1,5 @@
 
-{% extends 'base.html' %}
+{% extends 'basedetail.html' %}
 {% block content %}
 <form action="/art/update/{{ art_edit.id }}" method="POST">
   {% csrf_token %}

@@ -1,0 +1,48 @@
+body{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height:800px;
+    background-image:url("./image/basebg_.png");
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-attachment:fixed;
+  }
+  
+
+a{
+    font-size:15px;
+    font-weight:normal;
+    color:rgb(70, 70, 70);
+}
+
+ .blank{
+     width:100%;
+     height:40%;
+ }
+
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+
+      .container{
+          display:block;
+          margin: 0 auto;
+       
+          /*position: fixed;*/
+          padding-left: 485px;
+          padding-top: 90px;
+          
+      }

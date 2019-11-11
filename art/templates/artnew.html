@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'basedetail.html' %}
 {% block content %}
 <form action="/art/create" method="post" enctype="multipart/form-data">
   {% csrf_token %}
@@ -7,9 +7,20 @@
     <input type="text" name="title" id="title">
   </div>
   <div>
+    <label for="price">가격</label><br>
+    <textarea name="price" id="price" cols ="10" rows="1"></textarea>
+  </div>
+  <div>
       <label for="content">내용</label><br>
     <textarea name="content" id="content" cols="30" rows="10"></textarea>
   </div>
+  <select name ="category_select" class="box">
+  <option selected>select category </option>
+  <option value ="Fashion"> Fashion </option>
+  <option value ="Etc"> Etc </option>
+  <option value ="Sculpture"> Sculpture </option>
+  <option value ="Craft"> Craft </option>
+  <option value ="Painting"> Painting </option>
   <input type="submit" value="글쓰기">
   <div>
     <input type="file" accept="image/*" name="image">

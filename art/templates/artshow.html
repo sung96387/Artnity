@@ -1,16 +1,16 @@
-{% extends 'base.html' %}
+{% extends 'basedetail.html' %}
 {% block content %}
+
 <h1>{{ art.title }}</h1>
 <p>{{art.user}} </p>
 <p>{{art.id}} </p>
 <p>{{ art.created_at }}</p>
 {% if art.image %}
-<img src="{{ art.image.url }}" alt="art">
+<img id="img" src="{{ art.image.url }}" alt="art">
 {% endif %}
-<p>{{ art.content }}</p>
+<p id="img">{{ art.content }}</p>
 <br>
 <a href="/">홈으로</a>
-
 <form action="/art/comentcreate/{{ art.id }}" method="POST">
     {% csrf_token %}
     <div>
